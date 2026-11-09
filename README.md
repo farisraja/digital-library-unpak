@@ -1,132 +1,265 @@
-# E-SKRIPSI: Sistem Informasi Digital Library Skripsi Berbasis Website
-### Studi Kasus: Perpustakaan FMIPA Universitas Pakuan (UNPAK)
+<p align="center">
+  <img src="assets/img/logo-unpak.png" alt="Logo Universitas Pakuan" width="130" height="130" />
+</p>
 
-> **Disusun Oleh:**  
-> **Nama:** Faris Raja Ardana  
-> **NPM:** 065120125  
-> **Program Studi:** Ilmu Komputer  
-> **Fakultas:** Matematika dan Ilmu Pengetahuan Alam (FMIPA)  
-> **Universitas Pakuan - Bogor**
+<h1 align="center">E-SKRIPSI FMIPA UNIVERSITAS PAKUAN</h1>
+<h3 align="center">Sistem Informasi Digital Library Skripsi Berbasis Website</h3>
 
----
+<p align="center">
+  <em>Repositori Karya Ilmiah dan Perpustakaan Digital Mahasiswa FMIPA Universitas Pakuan</em>
+</p>
 
-## 📖 Tentang Aplikasi
-
-Aplikasi **E-SKRIPSI** adalah platform repositori dan perpustakaan digital (*digital library*) karya ilmiah skripsi berbasis web yang dirancang khusus untuk mempermudah civitas akademika di lingkungan **FMIPA Universitas Pakuan**.
-
-Sistem ini mentransformasi proses pengarsipan skripsi konvensional (fisik rak buku) menjadi digital, mempermudah mahasiswa dalam mencari referensi tugas akhir, memungkinkan mahasiswa mengunggah skripsi mandiri dalam format PDF, memfasilitasi Ketua Program Studi (Kaprodi) dalam mereview dan memvalidasi kelayakan naskah, serta membantu staf perpustakaan (Operator) dalam mengelola dan mencetak laporan rekapitulasi skripsi.
-
----
-
-## 🚀 Fitur Utama & Hak Akses (Multi-Role)
-
-Sistem mengimplementasikan hak akses berbasis peran (*Role-Based Access Control*) yang terdiri dari:
-
-### 1. 🎓 Mahasiswa
-* **Registrasi & Login Akun:** Pendaftaran mandiri dengan validasi NIM dan Prodi.
-* **Dashboard Mahasiswa:** Form unggah/kirim skripsi digital (NIM, Judul, Tahun, Format, Penjurusan, Dosen Pembimbing 1 & 2, serta file naskah PDF).
-* **Lihat Hasil Review:** Memantau status pengajuan (*Pending*, *Disetujui*, atau *Perlu Revisi*) beserta catatan arahan dari Kaprodi/Operator.
-* **Kumpulan Skripsi:** Pencarian dan eksplorasi katalog seluruh skripsi yang telah disetujui.
-* **Edit Profile:** Pengelolaan informasi data diri dan kata sandi.
-
-### 2. 👨‍🏫 Dosen / Kaprodi (Ketua Program Studi)
-* **Dashboard Kaprodi:** Ringkasan statistik naskah skripsi masuk, disetujui, dan jumlah mahasiswa.
-* **Validasi & Review Naskah:** Pemeriksaan berkas PDF skripsi mahasiswa dengan opsi status persetujuan (*Valid/Disetujui*, *Revisi*, *Menunggu*) dan form catatan evaluasi.
-* **Laporan Skripsi:** Rekapitulasi karya skripsi mahasiswa per tahun dan penjurusan.
-
-### 3. ⚙️ Operator / Admin (Staf Perpustakaan FMIPA)
-* **Dashboard Operator:** Manajemen seluruh data skripsi mahasiswa (verifikasi, edit, unduh berkas PDF, hapus).
-* **Kelola Data Mahasiswa:** Tambah mahasiswa manual, reset data, dan pemantauan akun.
-* **Kelola Data Kaprodi:** Manajemen akun dosen/kaprodi.
-* **Cetak Laporan Resmi:** Dilengkapi Kop Surat resmi FMIPA UNPAK, filter tahun akademik, peminatan/penjurusan, serta tanda tangan pengesahan siap cetak atau simpan ke PDF.
-
-### 4. 📚 Katalog Digital Publik (*Public Search*)
-* Pencarian cepat (*Live Search*) berdasarkan kata kunci, judul, nama mahasiswa, NIM, atau dosen pembimbing.
-* Filter berdasarkan tahun kelulusan dan bidang peminatan (RPL, Jaringan, Data Mining/AI, dll).
-* Detail naskah lengkap dengan **PDF Viewer bawaan** dan generator **Sitasi Otomatis (Format APA 7th Edition)** yang siap disalin.
+<p align="center">
+  <img src="https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP" />
+  <img src="https://img.shields.io/badge/MySQL-8.0%2F%20MariaDB-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
+  <img src="https://img.shields.io/badge/Bootstrap-5.3.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap" />
+  <img src="https://img.shields.io/badge/Chart.js-4.4-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white" alt="Chart.js" />
+  <img src="https://img.shields.io/badge/DataTables-Responsive-007ACC?style=for-the-badge" alt="DataTables" />
+  <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" alt="Status" />
+</p>
 
 ---
 
-## 🗄️ Struktur Basis Data (MySQL)
+## 📌 Ringkasan Akademik
 
-Sesuai dengan spesifikasi perancangan tabel pada laporan:
-1. `operator`: Menyimpan data admin perpustakaan (`id`, `username`, `password`, `nama`, `image`, `akses`).
-2. `mahasiswa`: Menyimpan data akun mahasiswa (`id`, `nim`, `nama`, `jenis_kelamin`, `tgl_lahir`, `alamat`, `agama`, `username`, `password`, `foto`, `akses`, `id_prodi`).
-3. `kaprodi`: Menyimpan data kepala program studi (`id`, `nidn`, `nama_prodi`, `nama`, `username`, `password`, `foto`, `akses`).
-4. `skripsi`: Menyimpan metadata karya ilmiah (`id`, `nim`, `judul`, `tahun`, `dokumen`, `format`, `penjurusan`, `dosbing`, `dosbing2`, `id_mahasiswa`, `id_prodi`, `nilai`, `catatan_review`).
-5. `prodi`: Menyimpan daftar program studi FMIPA UNPAK.
+* **Judul Tugas Akhir / Praktik Lapang:** Sistem Informasi Digital Library Skripsi Berbasis Website (Studi Kasus: Perpustakaan MIPA UNIVERSITAS PAKUAN)
+* **Penulis:** Faris Raja Ardana
+* **NPM:** 065120125
+* **Program Studi:** Ilmu Komputer
+* **Fakultas:** Matematika dan Ilmu Pengetahuan Alam (FMIPA)
+* **Perguruan Tinggi:** Universitas Pakuan, Bogor
+* **Dosen Pembimbing I:** Teguh Puja Negara, M.Si., S.Si.
+* **Dosen Pembimbing II:** Endang Suhendar, M.Kom.
+* **Dosen Penguji I:** Dinar Munggaran A, M.Kom.
+* **Ketua Program Studi:** Arie Qur’ania, M.Kom.
 
 ---
 
-## 🛠️ Persyaratan Sistem
+## 📖 Latar Belakang Masalah
 
-* **PHP:** Versi 8.0, 8.1, atau 8.2+
-* **Database:** MySQL 5.7+ atau MySQL 8.x / MariaDB
-* **Web Server:** Apache / Nginx (melalui Laragon atau XAMPP) atau PHP Built-in Server
+Pengelolaan naskah skripsi fisik pada rak perpustakaan konvensional memiliki berbagai keterbatasan:
+1. **Risiko Kerusakan & Kehilangan Arsip Fisik:** Dokumen cetak rentan lapuk, rusak, atau terselip.
+2. **Keterbatasan Akses Pemustaka:** Mahasiswa harus hadir secara fisik di ruang perpustakaan hanya untuk mencari referensi judul skripsi terdahulu.
+3. **Pencatatan & Pelaporan yang Tidak Efisien:** Pengolahan data peminjaman dan rekapitulasi naskah yang masih manual menyulitkan staf perpustakaan dalam menyajikan laporan akurat untuk pengambilan keputusan prodi.
+
+**E-SKRIPSI** hadir sebagai solusi digital terintegrasi yang memungkinkan pengarsipan naskah naskah tugas akhir secara terpusat, memfasilitasi mahasiswa dalam mengunggah skripsi mandiri (PDF), memudahkan Ketua Program Studi dalam mereview naskah, serta menyediakan katalog online yang dapat diakses kapan saja dan di mana saja.
+
+---
+
+## 🚀 Fitur Unggulan Sistem
+
+### 1. 🎓 Modul Mahasiswa
+* **Registrasi Mandiri:** Pendaftaran akun baru dengan validasi NIM, Program Studi, data diri lengkap, serta upload foto profil.
+* **Form Unggah Skripsi ("Kirim Skripsi"):** Mengunggah naskah tugas akhir lengkap dengan metadata (NIM, Judul, Tahun, Format, Bidang Penjurusan, Dosen Pembimbing 1 & 2, serta file PDF hingga 30 MB).
+* **Hasil Review & Tracking:** Pemantauan status persetujuan (*Pending*, *Disetujui*, atau *Perlu Revisi*) secara transparan beserta catatan arahan dari Kaprodi/Operator.
+* **Katalog Skripsi:** Pencarian dan pembacaan naskah referensi dari angkatan sebelumnya.
+* **Manajemen Profil:** Pengubahan biodata serta pembaruan kata sandi akun.
+
+### 2. 👨‍🏫 Modul Dosen / Kaprodi (Reviewer)
+* **Dashboard Analitik:** Statistik naskah skripsi terarsip, pengajuan pending, naskah disetujui, dan jumlah mahasiswa aktif.
+* **Grafik Visual Interaktif (Chart.js):**
+  - Diagram Batang: Tren jumlah pengajuan skripsi tahunan.
+  - Diagram Lingkaran: Proporsi distribusi konsentrasi keilmuan (*Rekayasa Perangkat Lunak, Jaringan, Data Mining/AI, Multimedia, Sistem Informasi*).
+* **Lembar Evaluasi & Validasi:** Pemeriksaan naskah PDF secara langsung, penentuan status validasi skripsi, serta penyampaian catatan revisi ke mahasiswa.
+* **Rekapitulasi Laporan:** Monitoring judul skripsi mahasiswa di bawah program studinya.
+
+### 3. ⚙️ Modul Operator / Admin (Staf Perpustakaan)
+* **Master Data Skripsi:** Pengelolaan penuh terhadap seluruh naskah skripsi mahasiswa (verifikasi, pratinjau, edit, unduh berkas PDF, hapus).
+* **Master Data Pengguna:** Manajemen akun Mahasiswa (tambah manual, reset data) dan akun Dosen/Kaprodi.
+* **Tabel Interaktif (DataTables.net):** Pencarian instan (*live filter*), pengurutan kolom (*column sorting*), serta paginasi data otomatis.
+* **Cetak Laporan Resmi:** Dilengkapi **Kop Surat resmi Fakultas MIPA Universitas Pakuan**, filter tahun akademik & penjurusan, serta tanda tangan pengesahan siap cetak atau simpan ke PDF.
+* **Dialog Konfirmasi Interaktif (SweetAlert2):** Proteksi aksi sensitif seperti penghapusan data atau perubahan status validasi.
+
+### 4. 📚 Modul Digital Library Publik (Katalog)
+* **Pencarian Cepat (*Live Multi-Query*):** Pencarian naskah berdasarkan kata kunci, judul, nama mahasiswa, NIM, atau dosen pembimbing.
+* **Penyaring Cerdas (*Filter*):** Filter spesifik berdasarkan tahun kelulusan dan bidang peminatan.
+* **Penampil Dokumen (*Built-in PDF Viewer*):** Pratinjau dokumen PDF langsung di halaman tanpa harus mengunduh terlebih dahulu.
+* **Generator Sitasi Otomatis:** Menghasilkan sitasi karya ilmiah dalam standar **APA (American Psychological Association) 7th Edition** siap salin dengan 1 klik.
+
+---
+
+## 🏗️ Arsitektur & Teknologi
+
+Sistem dibangun menggunakan arsitektur **MVC (Model-View-Controller)** yang terstruktur, ringan, dan aman:
+
+```
+digital-library-unpak/
+├── app/
+│   ├── Controllers/       # Pengendali logika alur (Auth, Mahasiswa, Operator, Kaprodi, Library)
+│   ├── Helpers/           # Otentikasi session (Auth.php) dan validasi upload (Upload.php)
+│   └── Models/            # Model data PDO (Operator, Mahasiswa, Kaprodi, Skripsi, Prodi)
+├── config/
+│   └── database.php       # Konfigurasi koneksi PDO MySQL & auto-migration fallback
+├── views/
+│   ├── layouts/           # Template utama (header, sidebar, footer)
+│   ├── auth/              # Halaman Login 3 Role dan Registrasi Mahasiswa
+│   ├── mahasiswa/         # Dashboard, Kirim Skripsi, dan Hasil Review
+│   ├── operator/          # Dashboard Data Skripsi, Mahasiswa, Kaprodi, dan Laporan Resmi
+│   ├── kaprodi/           # Dashboard Analitik dan Lembar Validasi Naskah
+│   └── library/           # Katalog Publik Kumpulan Skripsi & PDF Reader Detail
+├── assets/
+│   ├── css/               # Bootstrap 5.3, Bootstrap Icons, DataTables CSS, Custom Theme UNPAK
+│   ├── js/                # Bootstrap Bundle, jQuery 3.7, DataTables, Chart.js, SweetAlert2
+│   └── img/               # Logo resmi UNPAK, hero illustration, avatar
+├── uploads/
+│   ├── skripsi/           # Penyimpanan fisik file naskah PDF
+│   └── profiles/          # Penyimpanan foto profil pengguna
+├── database.sql           # Skema DDL dan DML data awal (seeds)
+├── install.php            # Antarmuka web instalasi & migrasi database mandiri
+├── index.php              # Master router & entry point aplikasi
+└── README.md              # Dokumentasi lengkap proyek
+```
+
+---
+
+## 🗄️ Rancangan Basis Data (Spesifikasi Tabel)
+
+Sistem menggunakan basis data relasional **MySQL / MariaDB** dengan *Storage Engine* **InnoDB**:
+
+```mermaid
+erDiagram
+    PRODI ||--o{ MAHASISWA : "memiliki"
+    PRODI ||--o{ KAPRODI : "memimpin"
+    PRODI ||--o{ SKRIPSI : "menaungi"
+    MAHASISWA ||--o{ SKRIPSI : "mengajukan"
+    OPERATOR ||--o{ SKRIPSI : "mengelola"
+    KAPRODI ||--o{ SKRIPSI : "memvalidasi"
+
+    PRODI {
+        int id PK
+        string nama_prodi
+        string fakultas
+    }
+    OPERATOR {
+        int id PK
+        string username
+        string password
+        string nama
+        string image
+        string akses
+    }
+    MAHASISWA {
+        int id PK
+        string nim
+        string nama
+        string jenis_kelamin
+        date tgl_lahir
+        text alamat
+        string agama
+        string username
+        string password
+        string foto
+        string akses
+        int id_prodi FK
+    }
+    KAPRODI {
+        int id PK
+        string nidn
+        string nama_prodi
+        string nama
+        string username
+        string password
+        string foto
+        string akses
+    }
+    SKRIPSI {
+        int id PK
+        string nim
+        string judul
+        int tahun
+        string dokumen
+        string format
+        string penjurusan
+        string dosbing
+        string dosbing2
+        int id_mahasiswa FK
+        int id_prodi FK
+        int nilai
+        text catatan_review
+    }
+```
 
 ---
 
 ## 💻 Panduan Instalasi & Menjalankan
 
-### Cara 1: Menggunakan Laragon / XAMPP (Rekomendasi)
-1. Letakkan folder proyek `digital-library-unpak` ke dalam folder web server Anda:
-   * **Laragon:** `C:\laragon\www\digital-library-unpak`
-   * **XAMPP:** `C:\xampp\htdocs\digital-library-unpak`
-2. Buka Laragon/XAMPP dan klik tombol **Start All** (pastikan Apache dan MySQL berjalan).
-3. Buka browser dan akses alamat instalasi otomatis:
+### Kebutuhan Perangkat Lunak:
+* **PHP:** Versi 8.0 ke atas (diuji optimal pada PHP 8.2) dengan ekstensi `pdo_mysql`, `mbstring`, `fileinfo`.
+* **Database:** MySQL 5.7+ / MySQL 8.x atau MariaDB.
+* **Web Server:** Apache / Nginx (Laragon, XAMPP) atau PHP Built-in Server.
+
+---
+
+### Cara 1: Menggunakan Laragon (Direkomendasikan)
+1. Salin atau *clone* repositori ini ke folder:
+   ```text
+   C:\laragon\www\digital-library-unpak
    ```
+2. Buka aplikasi **Laragon**, lalu klik tombol **Start All**.
+3. Buka browser dan jalankan script inisialisasi database otomatis:
+   ```text
    http://localhost/digital-library-unpak/install.php?run=install
    ```
-4. Sistem akan otomatis membuat database `digilib_unpak`, seluruh tabel, dan data awal (*seeds*).
-5. Setelah selesai, buka aplikasi di:
-   ```
+4. Buka aplikasi di:
+   ```text
    http://localhost/digital-library-unpak
    ```
+   *(Atau `http://digital-library-unpak.test` jika Pretty URL Laragon aktif).*
 
-### Cara 2: Menjalankan Langsung via Terminal / Command Prompt
-1. Buka Terminal pada direktori proyek.
-2. Jalankan perintah:
+---
+
+### Cara 2: Menggunakan XAMPP
+1. Salin folder proyek ke direktori:
+   ```text
+   C:\xampp\htdocs\digital-library-unpak
+   ```
+2. Nyalakan service **Apache** dan **MySQL** melalui XAMPP Control Panel.
+3. Buka browser dan akses `http://localhost/digital-library-unpak/install.php?run=install`.
+4. Sistem siap digunakan di `http://localhost/digital-library-unpak`.
+
+---
+
+### Cara 3: Menggunakan PHP Built-in Server (Terminal)
+1. Buka PowerShell / Terminal di direktori proyek:
+   ```bash
+   cd digital-library-unpak
+   ```
+2. Pastikan service MySQL lokal Anda sudah aktif pada port 3306.
+3. Jalankan server lokal:
    ```bash
    php -S localhost:8000
    ```
-3. Buka browser Anda dan akses:
-   ```
-   http://localhost:8000
-   ```
+4. Akses melalui browser pada alamat `http://localhost:8000`.
 
 ---
 
-## 🔑 Akun Login Uji Coba (Default)
+## 🔑 Akun Uji Coba Default
 
-| Role | Username / Identifier | Password | Nama Pengguna |
-| :--- | :--- | :--- | :--- |
-| **Mahasiswa** | `faris` (atau NIM: `065120125`) | `password123` | Faris Raja Ardana |
-| **Kaprodi** | `kaprodi` (atau NIDN: `0412088501`) | `password123` | Arie Qur'ania, M.Kom. |
-| **Operator** | `admin` | `password123` | Staf Perpustakaan FMIPA UNPAK |
+Sistem telah dilengkapi dengan *dummy data* bawaan yang siap dicoba tanpa perlu menginput ulang data dari nol:
 
-*(Tersedia tombol pintas pada halaman login untuk mengisi kredensial di atas secara instan).*
+| Role / Peran | Username / Identifier | Password Default | Nama Pengguna | Deskripsi Peran |
+| :--- | :--- | :--- | :--- | :--- |
+| **Mahasiswa** | `faris` *(atau NIM: `065120125`)* | `password123` | Faris Raja Ardana | Akses kirim skripsi & hasil review |
+| **Dosen / Kaprodi** | `kaprodi` *(atau NIDN: `0412088501`)* | `password123` | Arie Qur'ania, M.Kom. | Akses evaluasi & validasi naskah |
+| **Operator / Admin** | `admin` | `password123` | Staf Perpustakaan FMIPA UNPAK | Akses kelola skripsi, user, & laporan |
+
+> [!TIP]
+> Pada halaman login telah disediakan tombol pintas (*quick autofill*) pada bagian bawah untuk mengisi kredensial di atas secara instan hanya dengan 1 klik.
 
 ---
 
-## 📤 Panduan Push ke Repositori GitHub Anda
+## 📚 Format Sitasi Akademik (APA 7th)
 
-Jika Anda ingin menyimpan kode ini ke akun GitHub pribadi Anda (`https://github.com/<username-kamu>`):
+Jika Anda merujuk pada sistem informasi atau naskah skripsi ini, gunakan format sitasi berikut:
 
-1. Buat sebuah repository baru di akun GitHub Anda (misalnya beri nama `digital-library-unpak`). Biarkan repositori dalam keadaan kosong tanpa centang *Add a README file*.
-2. Buka Terminal/PowerShell di folder proyek ini (`digital-library-unpak`), lalu jalankan perintah berikut secara berurutan:
-
-```bash
-# 1. Pastikan Anda berada di direktori proyek
-git init
-
-# 2. Hubungkan repository lokal dengan repository GitHub Anda
-git remote add origin https://github.com/USERNAME_GITHUB_ANDA/digital-library-unpak.git
-
-# 3. Ubah nama branch utama menjadi main
-git branch -M main
-
-# 4. Push seluruh kode dan riwayat commit ke GitHub
-git push -u origin main
+```text
+Ardana, F. R. (2023). Sistem Informasi Digital Library Skripsi Berbasis Website (Studi Kasus: Perpustakaan MIPA Universitas Pakuan) [Laporan Praktik Lapang, Universitas Pakuan]. Repositori FMIPA UNPAK.
 ```
 
-*(Ganti `USERNAME_GITHUB_ANDA` dengan username GitHub Anda yang sebenarnya).*
+---
+
+## 📄 Lisensi & Hak Cipta
+
+Proyek ini dikembangkan untuk keperluan akademik dan penelitian di lingkungan **Program Studi Ilmu Komputer, Fakultas Matematika dan Ilmu Pengetahuan Alam, Universitas Pakuan**.
+
+Hak Cipta © 2023–2026 **Faris Raja Ardana (NPM: 065120125)**. Seluruh hak cipta dilindungi undang-undang.
