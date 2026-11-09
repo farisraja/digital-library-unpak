@@ -85,7 +85,7 @@ $flashSuccess = Auth::getFlash('success');
                         <label for="username" class="form-label fw-semibold">Username / NIM / NIDN</label>
                         <div class="input-group">
                             <span class="input-group-text bg-white"><i class="bi bi-person"></i></span>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username" required autofocus>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username" required>
                         </div>
                     </div>
 

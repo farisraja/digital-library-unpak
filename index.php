@@ -12,6 +12,21 @@ require_once __DIR__ . '/app/Controllers/LibraryController.php';
 
 Auth::init();
 
+// Quick Dev Preview Auto-login for local screenshot rendering
+if (!Auth::check() && isset($_GET['preview_as']) && in_array($_SERVER['REMOTE_ADDR'] ?? '', ['127.0.0.1', '::1'])) {
+    $role = $_GET['preview_as'];
+    if ($role === 'mahasiswa') {
+        $u = (new Mahasiswa())->findByUsername('faris');
+        if ($u) Auth::login('mahasiswa', $u);
+    } elseif ($role === 'operator') {
+        $u = (new Operator())->findByUsername('admin');
+        if ($u) Auth::login('operator', $u);
+    } elseif ($role === 'kaprodi') {
+        $u = (new Kaprodi())->findByUsername('kaprodi');
+        if ($u) Auth::login('kaprodi', $u);
+    }
+}
+
 $action = $_GET['action'] ?? null;
 $page = $_GET['page'] ?? null;
 
