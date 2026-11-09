@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350" width="500" height="350">
+  <defs>
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a148c"/>
+      <stop offset="100%" stop-color="#7b1fa2"/>
+    </linearGradient>
+    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e1bee7"/>
+      <stop offset="100%" stop-color="#f3e5f5"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Backdrop Bubble -->
+  <circle cx="250" cy="175" r="150" fill="url(#cloudGrad)" opacity="0.6"/>
+  
+  <!-- Bookshelf / Floating Books -->
+  <rect x="50" y="240" width="40" height="70" rx="3" fill="#3949ab"/>
+  <rect x="95" y="210" width="35" height="100" rx="3" fill="#fbc02d"/>
+  <rect x="135" y="230" width="30" height="80" rx="3" fill="#00897b"/>
+  <line x1="30" y1="310" x2="470" y2="310" stroke="#b39ddb" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Desktop Monitor / Portal -->
+  <rect x="180" y="70" width="220" height="150" rx="10" fill="#fff" stroke="#512da8" stroke-width="4"/>
+  <rect x="190" y="80" width="200" height="130" rx="6" fill="url(#screenGrad)"/>
+  
+  <!-- Screen Elements -->
+  <rect x="205" y="95" width="80" height="10" rx="4" fill="#ffd54f"/>
+  <rect x="205" y="115" width="170" height="6" rx="3" fill="#e1bee7"/>
+  <rect x="205" y="128" width="150" height="6" rx="3" fill="#e1bee7"/>
+  <rect x="205" y="141" width="130" height="6" rx="3" fill="#e1bee7"/>
+  
+  <!-- Digital Document Badge on Screen -->
+  <rect x="205" y="160" width="60" height="25" rx="4" fill="#ffb300"/>
+  <text x="235" y="177" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#4a148c" text-anchor="middle">PDF</text>
+  
+  <rect x="275" y="160" width="60" height="25" rx="4" fill="#8e24aa"/>
+  <text x="305" y="177" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#fff" text-anchor="middle">VIEW</text>
+
+  <!-- Monitor Stand -->
+  <rect x="280" y="220" width="20" height="40" fill="#7e57c2"/>
+  <ellipse cx="290" cy="260" rx="45" ry="10" fill="#512da8"/>
+
+  <!-- Student Character -->
+  <circle cx="150" cy="130" r="30" fill="#ffcc80"/> <!-- Face -->
+  <!-- Hair -->
+  <path d="M 120,130 Q 150,90 180,130 Q 170,105 145,105 Q 125,105 120,130 Z" fill="#37474f"/>
+  <!-- Graduation Cap -->
+  <polygon points="150,75 195,95 150,115 105,95" fill="#311b92"/>
+  <rect x="135" y="105" width="30" height="15" fill="#4527a0" rx="2"/>
+  <path d="M 195,95 Q 205,115 200,135" stroke="#fbc02d" stroke-width="3" fill="none"/>
+  <circle cx="200" cy="135" r="4" fill="#fbc02d"/>
+  
+  <!-- Body / Hoodie -->
+  <path d="M 115,160 Q 150,150 185,160 L 195,240 L 105,240 Z" fill="#673ab7"/>
+  <!-- Laptop in front of student -->
+  <polygon points="120,230 180,230 190,250 110,250" fill="#cfd8dc"/>
+  <polygon points="125,230 175,230 170,195 130,195" fill="#455a64"/>
+
+  <!-- Floating Star & Cloud Badges -->
+  <path d="M 420,110 L 424,120 L 435,120 L 427,126 L 430,136 L 420,130 L 410,136 L 413,126 L 405,120 L 416,120 Z" fill="#fbc02d"/>
+  <path d="M 70,110 L 73,117 L 81,117 L 75,122 L 77,130 L 70,125 L 63,130 L 65,122 L 59,117 L 67,117 Z" fill="#fbc02d"/>
+</svg>

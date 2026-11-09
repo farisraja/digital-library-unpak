@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="goldGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff59d"/>
+      <stop offset="70%" stop-color="#fbc02d"/>
+      <stop offset="100%" stop-color="#f57f17"/>
+    </radialGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2e7d32"/>
+      <stop offset="100%" stop-color="#1b5e20"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer Gold Ring -->
+  <circle cx="100" cy="100" r="95" fill="url(#goldGrad)" stroke="#c49000" stroke-width="4"/>
+  <circle cx="100" cy="100" r="82" fill="#fff" stroke="#fbc02d" stroke-width="2"/>
+  
+  <!-- Text along arc or circular styled -->
+  <path id="curveTop" d="M 30,100 A 70,70 0 0,1 170,100" fill="none"/>
+  <text font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="14" fill="#1b5e20" letter-spacing="3">
+    <textPath href="#curveTop" startOffset="50%" text-anchor="middle">
+      UNIVERSITAS
+    </textPath>
+  </text>
+  
+  <path id="curveBottom" d="M 35,100 A 65,65 0 0,0 165,100" fill="none"/>
+  <text font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="15" fill="#1b5e20" letter-spacing="4">
+    <textPath href="#curveBottom" startOffset="50%" text-anchor="middle">
+      PAKUAN
+    </textPath>
+  </text>
+
+  <!-- Inner Crest -->
+  <polygon points="100,45 145,125 55,125" fill="url(#greenGrad)" stroke="#fbc02d" stroke-width="3"/>
+  <polygon points="100,60 135,120 65,120" fill="#388e3c"/>
+  
+  <!-- Candle / Torch of Wisdom -->
+  <path d="M 100,70 Q 106,85 100,95 Q 94,85 100,70 Z" fill="#ffd54f"/>
+  <rect x="97" y="95" width="6" height="20" fill="#fff" rx="2"/>
+  <ellipse cx="100" cy="115" rx="14" ry="4" fill="#fbc02d"/>
+  
+  <!-- Decorative Stars -->
+  <polygon points="45,95 47,100 52,100 48,103 50,108 45,105 40,108 42,103 38,100 43,100" fill="#1b5e20"/>
+  <polygon points="155,95 157,100 162,100 158,103 160,108 155,105 150,108 152,103 148,100 153,100" fill="#1b5e20"/>
+</svg>
