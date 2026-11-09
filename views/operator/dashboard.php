@@ -82,6 +82,30 @@ $flashError = Auth::getFlash('error');
             </div>
         </div>
 
+        <!-- Visualisasi Grafik Analytics (Chart.js) -->
+        <div class="row g-3 mb-4">
+            <div class="col-lg-8">
+                <div class="card card-custom h-100">
+                    <div class="card-header bg-white">
+                        <i class="bi bi-bar-chart-fill me-2 text-primary"></i>Tren Pengarsipan Skripsi Tahunan
+                    </div>
+                    <div class="card-body">
+                        <canvas id="chartTahun" height="120"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card card-custom h-100">
+                    <div class="card-header bg-white">
+                        <i class="bi bi-pie-chart-fill me-2 text-warning"></i>Distribusi Peminatan / Bidang
+                    </div>
+                    <div class="card-body d-flex align-items-center justify-content-center">
+                        <canvas id="chartPenjurusan" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Tabel Data Skripsi (Sesuai Gambar 20 di Laporan) -->
         <div class="card card-custom">
             <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
@@ -100,8 +124,8 @@ $flashError = Auth::getFlash('error');
             </div>
 
             <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table table-custom table-hover align-middle mb-0">
+                <div class="table-responsive p-3">
+                    <table class="table table-custom table-hover align-middle mb-0 datatable-init">
                         <thead>
                             <tr>
                                 <th style="width: 50px;">No</th>
@@ -117,11 +141,7 @@ $flashError = Auth::getFlash('error');
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (empty($skripsiList)): ?>
-                            <tr>
-                                <td colspan="10" class="text-center py-4 text-muted">Belum ada data skripsi yang ditemukan.</td>
-                            </tr>
-                            <?php else: ?>
+                            <?php if (!empty($skripsiList)): ?>
                                 <?php foreach ($skripsiList as $index => $row): ?>
                                 <tr>
                                     <td><?= $index + 1 ?></td>
@@ -159,9 +179,9 @@ $flashError = Auth::getFlash('error');
                                             <a href="index.php?page=skripsi_detail&id=<?= $row['id'] ?>" class="btn btn-outline-info" title="Lihat">
                                                 <i class="bi bi-eye"></i>
                                             </a>
-                                            <a href="index.php?action=delete_skripsi&id=<?= $row['id'] ?>" class="btn btn-outline-danger" title="Hapus" onclick="return confirm('Apakah Anda yakin ingin menghapus data skripsi ini?')">
+                                            <button type="button" class="btn btn-outline-danger" title="Hapus" onclick="confirmDelete('index.php?action=delete_skripsi&id=<?= $row['id'] ?>', 'Hapus Naskah Skripsi Ini?')">
                                                 <i class="bi bi-trash"></i>
-                                            </a>
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>
@@ -216,6 +236,59 @@ function openValidasiModal(id, nilai, catatan) {
     document.getElementById('modalCatatan').value = catatan;
     new bootstrap.Modal(document.getElementById('modalValidasi')).show();
 }
+
+// Inisialisasi Chart.js
+document.addEventListener('DOMContentLoaded', function() {
+    const dataTahun = <?= json_encode($stats['by_tahun'] ?? []) ?>;
+    const dataPenjurusan = <?= json_encode($stats['by_penjurusan'] ?? []) ?>;
+
+    // Chart Tren Tahunan
+    const ctxTahun = document.getElementById('chartTahun');
+    if (ctxTahun) {
+        new Chart(ctxTahun, {
+            type: 'bar',
+            data: {
+                labels: dataTahun.map(d => d.tahun),
+                datasets: [{
+                    label: 'Jumlah Skripsi',
+                    data: dataTahun.map(d => d.total),
+                    backgroundColor: '#5e35b1',
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, ticks: { stepSize: 1 } }
+                }
+            }
+        });
+    }
+
+    // Chart Distribusi Peminatan
+    const ctxPenjurusan = document.getElementById('chartPenjurusan');
+    if (ctxPenjurusan) {
+        new Chart(ctxPenjurusan, {
+            type: 'doughnut',
+            data: {
+                labels: dataPenjurusan.map(d => d.penjurusan),
+                datasets: [{
+                    data: dataPenjurusan.map(d => d.total),
+                    backgroundColor: ['#5e35b1', '#fbc02d', '#2e7d32', '#0288d1', '#e64a19']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } }
+                }
+            }
+        });
+    }
+});
 </script>
 
 <?php require_once dirname(__DIR__) . '/layouts/footer.php'; ?>

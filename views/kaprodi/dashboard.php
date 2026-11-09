@@ -88,6 +88,30 @@ $flashError = Auth::getFlash('error');
             </div>
         </div>
 
+        <!-- Visualisasi Grafik Analytics Kaprodi (Chart.js) -->
+        <div class="row g-3 mb-4">
+            <div class="col-lg-7">
+                <div class="card card-custom h-100">
+                    <div class="card-header bg-white">
+                        <i class="bi bi-bar-chart-line-fill me-2 text-primary"></i>Statistik Judul Skripsi Per Tahun
+                    </div>
+                    <div class="card-body">
+                        <canvas id="chartKaprodiTahun" height="120"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card card-custom h-100">
+                    <div class="card-header bg-white">
+                        <i class="bi bi-pie-chart-fill me-2 text-warning"></i>Rasio Konsentrasi Bidang Keilmuan
+                    </div>
+                    <div class="card-body d-flex align-items-center justify-content-center">
+                        <canvas id="chartKaprodiPenjurusan" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Pengajuan Skripsi Terbaru yang Membutuhkan Validasi -->
         <div class="card card-custom">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -189,6 +213,59 @@ function openReviewModal(id, nilai, catatan) {
     document.getElementById('reviewCatatan').value = catatan;
     new bootstrap.Modal(document.getElementById('modalReviewKaprodi')).show();
 }
+
+// Inisialisasi Chart.js Kaprodi
+document.addEventListener('DOMContentLoaded', function() {
+    const dataTahun = <?= json_encode($stats['by_tahun'] ?? []) ?>;
+    const dataPenjurusan = <?= json_encode($stats['by_penjurusan'] ?? []) ?>;
+
+    // Chart Tren Tahunan
+    const ctxTahun = document.getElementById('chartKaprodiTahun');
+    if (ctxTahun) {
+        new Chart(ctxTahun, {
+            type: 'bar',
+            data: {
+                labels: dataTahun.map(d => d.tahun),
+                datasets: [{
+                    label: 'Skripsi Diajukan',
+                    data: dataTahun.map(d => d.total),
+                    backgroundColor: '#7e57c2',
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, ticks: { stepSize: 1 } }
+                }
+            }
+        });
+    }
+
+    // Chart Distribusi Peminatan
+    const ctxPenjurusan = document.getElementById('chartKaprodiPenjurusan');
+    if (ctxPenjurusan) {
+        new Chart(ctxPenjurusan, {
+            type: 'pie',
+            data: {
+                labels: dataPenjurusan.map(d => d.penjurusan),
+                datasets: [{
+                    data: dataPenjurusan.map(d => d.total),
+                    backgroundColor: ['#5e35b1', '#fbc02d', '#2e7d32', '#0288d1', '#e64a19']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } }
+                }
+            }
+        });
+    }
+});
 </script>
 
 <?php require_once dirname(__DIR__) . '/layouts/footer.php'; ?>

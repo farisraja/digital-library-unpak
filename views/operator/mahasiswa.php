@@ -44,8 +44,8 @@ $flashError = Auth::getFlash('error');
                 <i class="bi bi-people me-2 text-primary"></i>Daftar Mahasiswa Terdaftar
             </div>
             <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table table-custom table-hover align-middle mb-0">
+                <div class="table-responsive p-3">
+                    <table class="table table-custom table-hover align-middle mb-0 datatable-init">
                         <thead>
                             <tr>
                                 <th style="width: 50px;">No</th>
@@ -59,11 +59,7 @@ $flashError = Auth::getFlash('error');
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (empty($mahasiswaList)): ?>
-                            <tr>
-                                <td colspan="8" class="text-center py-4 text-muted">Belum ada data mahasiswa.</td>
-                            </tr>
-                            <?php else: ?>
+                            <?php if (!empty($mahasiswaList)): ?>
                                 <?php foreach ($mahasiswaList as $i => $m): ?>
                                 <tr>
                                     <td><?= $i + 1 ?></td>
@@ -76,9 +72,9 @@ $flashError = Auth::getFlash('error');
                                     <td><?= htmlspecialchars($m['nama_prodi'] ?? 'Ilmu Komputer') ?></td>
                                     <td><code><?= htmlspecialchars($m['username']) ?></code></td>
                                     <td class="text-center">
-                                        <a href="index.php?action=delete_mahasiswa&id=<?= $m['id'] ?>" class="btn btn-sm btn-outline-danger" title="Hapus" onclick="return confirm('Apakah Anda yakin ingin menghapus akun mahasiswa ini?')">
+                                        <button type="button" class="btn btn-sm btn-outline-danger" title="Hapus" onclick="confirmDelete('index.php?action=delete_mahasiswa&id=<?= $m['id'] ?>', 'Hapus Akun Mahasiswa Ini?')">
                                             <i class="bi bi-trash"></i>
-                                        </a>
+                                        </button>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

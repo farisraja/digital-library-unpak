@@ -142,12 +142,32 @@ class Skripsi extends Model {
         $revision = $this->db->query("SELECT COUNT(*) FROM skripsi WHERE nilai = 2")->fetchColumn();
         $mahasiswaCount = $this->db->query("SELECT COUNT(*) FROM mahasiswa")->fetchColumn();
 
+        // Data statistik per penjurusan
+        $stmtPenjurusan = $this->db->query("
+            SELECT penjurusan, COUNT(*) as total 
+            FROM skripsi 
+            GROUP BY penjurusan 
+            ORDER BY total DESC
+        ");
+        $byPenjurusan = $stmtPenjurusan->fetchAll();
+
+        // Data statistik per tahun
+        $stmtTahun = $this->db->query("
+            SELECT tahun, COUNT(*) as total 
+            FROM skripsi 
+            GROUP BY tahun 
+            ORDER BY tahun ASC
+        ");
+        $byTahun = $stmtTahun->fetchAll();
+
         return [
-            'total'     => (int) $total,
-            'approved'  => (int) $approved,
-            'pending'   => (int) $pending,
-            'revision'  => (int) $revision,
-            'mahasiswa' => (int) $mahasiswaCount,
+            'total'         => (int) $total,
+            'approved'      => (int) $approved,
+            'pending'       => (int) $pending,
+            'revision'      => (int) $revision,
+            'mahasiswa'     => (int) $mahasiswaCount,
+            'by_penjurusan' => $byPenjurusan,
+            'by_tahun'      => $byTahun,
         ];
     }
 }

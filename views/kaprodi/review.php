@@ -34,8 +34,8 @@ $flashError = Auth::getFlash('error');
                 <i class="bi bi-journal-check me-2 text-primary"></i>Seluruh Naskah Skripsi Mahasiswa
             </div>
             <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table table-custom table-hover align-middle mb-0">
+                <div class="table-responsive p-3">
+                    <table class="table table-custom table-hover align-middle mb-0 datatable-init">
                         <thead>
                             <tr>
                                 <th style="width: 50px;">No</th>
@@ -51,11 +51,7 @@ $flashError = Auth::getFlash('error');
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (empty($skripsiList)): ?>
-                            <tr>
-                                <td colspan="10" class="text-center py-4 text-muted">Belum ada data naskah skripsi.</td>
-                            </tr>
-                            <?php else: ?>
+                            <?php if (!empty($skripsiList)): ?>
                                 <?php foreach ($skripsiList as $i => $s): ?>
                                 <tr>
                                     <td><?= $i + 1 ?></td>
