@@ -43,7 +43,7 @@ if (isset($_GET['run']) && $_GET['run'] === 'install') {
 <body>
     <div class="card setup-card">
         <div class="card-header bg-white text-center py-4 border-bottom">
-            <img src="assets/img/logo-unpak.svg" alt="Logo UNPAK" width="60" class="mb-2">
+            <img src="assets/img/logo-unpak.png" alt="Logo UNPAK" width="70" class="mb-2 object-fit-contain">
             <h4 class="fw-bold mb-0 text-dark">Setup & Migrasi Database</h4>
             <small class="text-muted">Sistem Informasi Digital Library Skripsi FMIPA UNPAK</small>
         </div>

@@ -10,7 +10,7 @@ $flashSuccess = Auth::getFlash('success');
 <div class="container py-5">
     <div class="card card-custom mx-auto shadow" style="max-width: 650px;">
         <div class="card-header text-center bg-white border-bottom pt-4 pb-3">
-            <img src="assets/img/logo-unpak.svg" alt="Logo Universitas Pakuan" width="70" class="mb-2">
+            <img src="assets/img/logo-unpak.png" alt="Logo Universitas Pakuan" width="80" class="mb-2 object-fit-contain">
             <h4 class="fw-bold mb-0 text-dark">Registrasi Mahasiswa</h4>
             <small class="text-muted">Perpustakaan FMIPA Universitas Pakuan</small>
         </div>

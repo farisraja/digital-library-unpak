@@ -34,7 +34,7 @@ $pageTitle = $pageTitle ?? 'Sistem Informasi Digital Library Skripsi';
         </button>
         <?php endif; ?>
         <a href="index.php" class="d-flex align-items-center text-white text-decoration-none gap-2">
-            <img src="assets/img/logo-unpak.svg" alt="Logo UNPAK" width="38" height="38">
+            <img src="assets/img/logo-unpak.png" alt="Logo UNPAK" width="38" height="38" class="object-fit-contain">
             <div>
                 <div class="brand-title lh-1">E-SKRIPSI</div>
                 <small class="opacity-75" style="font-size: 0.72rem; letter-spacing: 0.5px;">PERPUSTAKAAN FMIPA UNIVERSITAS PAKUAN</small>

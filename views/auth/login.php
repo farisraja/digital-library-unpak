@@ -12,7 +12,7 @@ $flashSuccess = Auth::getFlash('success');
     <div class="login-hero-card">
         <!-- Hero Header -->
         <div class="login-hero-header">
-            <img src="assets/img/logo-unpak.svg" alt="UNPAK Logo" width="60" class="mb-2">
+            <img src="assets/img/logo-unpak.png" alt="UNPAK Logo" width="70" class="mb-2 object-fit-contain">
             <h2 class="fw-bold tracking-wide mb-1">E-SKRIPSI</h2>
             <p class="mb-3 opacity-90">SISTEM INFORMASI DIGITAL LIBRARY SKRIPSI<br>PERPUSTAKAAN FMIPA UNIVERSITAS PAKUAN</p>
             

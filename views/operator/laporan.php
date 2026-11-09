@@ -60,7 +60,7 @@ $filterPenjurusan = $_GET['penjurusan'] ?? '';
         <div class="card card-custom p-4 p-md-5 bg-white shadow-sm">
             <!-- Kop Surat Universitas Pakuan FMIPA -->
             <div class="d-flex align-items-center gap-3 pb-3 border-bottom border-dark border-3 mb-4">
-                <img src="assets/img/logo-unpak.svg" alt="Logo UNPAK" width="85" height="85">
+                <img src="assets/img/logo-unpak.png" alt="Logo UNPAK" width="90" height="90" class="object-fit-contain">
                 <div class="text-center flex-grow-1">
                     <h5 class="mb-0 fw-bold text-uppercase" style="letter-spacing: 1px;">YAYASAN PAKUAN SILIWANGI</h5>
                     <h4 class="mb-0 fw-bolder text-uppercase text-dark" style="letter-spacing: 1px;">UNIVERSITAS PAKUAN</h4>
